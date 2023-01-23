@@ -1,0 +1,7 @@
+.searchbar {
+    padding: 0.5rem;
+    margin:15px 50% auto;
+    border-radius: 8%;
+    /*no focus on the field */
+    outline: none;
+}
