@@ -1,6 +1,6 @@
 # Population tracker
 
-<img  height='500' width='500' src="https://i.ibb.co/Sm2KMN2/Tracker-population.jpg" alt="Tracker-population">
+<img  height='500' width='800' src="https://i.ibb.co/Sm2KMN2/Tracker-population.jpg" alt="Tracker-population">
 
 
 # Getting Started with Create React App
