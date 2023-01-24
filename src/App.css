@@ -25,7 +25,39 @@ ul>li:hover{
     margin-right: 15%;
 }
 
+h1{
+    font-size:40px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.flag{
+    width: 200px;
+    height: 150px;
+    border: 2px solid #000;
+    border-radius: 10%;
+    padding: 10px;
+}
+
 .info-container{
-    margin: 20px 40% auto;
+    display: flex;
+    flex-direction: row;   
+    align-items: center;
+    padding: 10px;
     width: auto;
+}
+
+.item{
+    margin:  10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+.map{
+    width: 500px;
+    height: 500px;
+    border: 2px solid #000;
+    border-radius: 10%;
+    padding: 10px;
 }

@@ -8,8 +8,9 @@ function App() {
   const [countries,setCountries]= useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [search, setSearch] = useState('');
+  const [selected, setSelected] = useState([]);
   
-  
+  console.log(countries)
  //Take data from API with useEffect, async/await and try/catch
   useEffect(() => {
     const fetchData = async () => {
@@ -29,53 +30,116 @@ function App() {
   const handleSelect = (country) => {
     setSearch(country.name);
     setFilteredCountries([]);
-  };
-
+  }
   const onChange = (e) => {
     setSearch(e.target.value);
     const updatedCountries = countries.filter((country) =>
       country.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
-
     setFilteredCountries(updatedCountries);
   };
 
+//Save the search informations in the selected state
+  useEffect(() => {
+    const selectedCountry = countries.find((country) => country.name === search);
+    if (selectedCountry) {
+      setSelected(selectedCountry);
+    }
+  }, [search, countries]);
 
-
+   if(search === 0 ){
+    setFilteredCountries('');
+    
+   }
    
-
-
+  
 
 
 
   return (
     <>
       <div>
-        <SearchBar onChange={onChange} value={search}/>
+        <SearchBar value={search} onChange={onChange} />
         {
           <ul className="list">
-            {search.length > 0 && filteredCountries.map((country) => (
-              <li key={country.name} onClick={() => handleSelect(country)}>
-                {country.name}
-              </li>
-            ))}
+            {search.length > 0 &&
+              filteredCountries.map((country) => (
+                <li key={country.name} onClick={() => handleSelect(country)}>
+                  {country.name}
+                </li>
+              ))}
           </ul>
-        } 
+        }
       </div>
-      {/*Create a div to shows population, capital and currency information from the selected country from filteredCountries */}
-      <div> 
-        {filteredCountries.map((country) => (
-          <div key={country.name}>  
-            <h1>{country.name}</h1>
-            <p>Population: {country.population}</p>
-            <p>Capital: {country.capital}</p>
-            <p>Currency: {country.currencies[0].name}</p>
-          </div>
-        ))}
+      <div className="info-container">
+        <div>
+          {/*If flagi there is shows it otherwise flag not available */}
+          {selected.flag ? (
+            <img
+              src={selected.flag}
+              alt="flag"
+              width={180}
+              height={120}
+              className="flag"
+            />
+          ) : (
+            <p> </p>
+          )}
+        </div>
+        <div>
+          <h1>{selected.name}</h1>
+          <p className="item">Capital: {selected.capital}</p>
+          {/*Convert population with Number */}
+          <p className="item">
+            Population:{" "}
+            {selected.population &&
+              Number(selected.population).toLocaleString("en") + " ab."}
+          </p>
+         {/*Calculate ab/Km^2 per square km */}
+          <p className="item">  
+            Density:{" "}
+            {selected.population && selected.area
+              ? Number(selected.population / selected.area).toLocaleString("en") +
+                " ab./Km²"
+              : " "}
+         </p>
+         <p className="item">
+            Area:{" "}
+            {selected.area &&
+              Number(selected.area).toLocaleString("en") + " km²"}
+          </p>
+          <p className="item">
+            Timezone:{" "}
+            {selected.timezones &&
+              selected.timezones.map((timezone) => timezone)}
+          </p>
+          <p className="item">Region: {selected.region}</p>
+          {/*if languages are two use 'and' otherwise use ',' and at end 'and'*/}
+          <p className="item">
+            Languages:{" "}
+            {selected.languages && selected.languages.length > 1
+              ? selected.languages
+                  .map((language) => language.name)
+                  .join(", ")
+                  .replace(/,(?!.*,)/gim, " and")
+              : selected.languages &&
+                selected.languages.map((language) => language.name)}
+          </p>
+          {/*Currency in format: Euro - (€) */}
+          <p className="item">
+            Currencies:{" "}
+            {selected.currencies &&
+              selected.currencies.map(
+                (currency) => currency.name + " - (" + currency.symbol + ")"
+              )}
+          </p>
+        </div>
+        <div className="map">
+
+        </div>
       </div>
-    
-</>  
-  )
+    </>
+  );
 }
 
 export default App;
