@@ -2,6 +2,7 @@ import SearchBar from './components/SearchBar/SearchBar.js';
 import { useState,useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
+import {Map} from './components/Map/Map.js';
 
 
 function App() {
@@ -9,6 +10,11 @@ function App() {
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [search, setSearch] = useState('');
   const [selected, setSelected] = useState([]);
+ 
+  //Save latitude and longitude values for selected country
+  const lat = selected.latlng && selected.latlng[0];
+  const lng = selected.latlng && selected.latlng[1];
+ 
   
   console.log(countries)
  //Take data from API with useEffect, async/await and try/catch
@@ -39,7 +45,7 @@ function App() {
     setFilteredCountries(updatedCountries);
   };
 
-//Save the search informations in the selected state
+//Save the search informations in the selected state and save lat and lng values
   useEffect(() => {
     const selectedCountry = countries.find((country) => country.name === search);
     if (selectedCountry) {
@@ -49,12 +55,12 @@ function App() {
 
    if(search === 0 ){
     setFilteredCountries('');
-    
    }
    
   
+  
 
-
+console.log(lat,lng)
 
   return (
     <>
@@ -72,7 +78,7 @@ function App() {
         }
       </div>
       <div className="info-container">
-        <div>
+        <div className='country-flag'>
           {/*If flagi there is shows it otherwise flag not available */}
           {selected.flag ? (
             <img
@@ -86,7 +92,7 @@ function App() {
             <p> </p>
           )}
         </div>
-        <div>
+        <div className="info">
           <h1>{selected.name}</h1>
           <p className="item">Capital: {selected.capital}</p>
           {/*Convert population with Number */}
@@ -111,7 +117,13 @@ function App() {
           <p className="item">
             Timezone:{" "}
             {selected.timezones &&
-              selected.timezones.map((timezone) => timezone)}
+             selected.timezones.length > 1
+              ? selected.timezones
+                  .map((timezone) => timezone)
+                  .join(", ")
+                  .replace(/,(?!.*,)/gim, " and")
+              : selected.timezones &&
+                selected.timezones.map((timezone) => timezone)}
           </p>
           <p className="item">Region: {selected.region}</p>
           {/*if languages are two use 'and' otherwise use ',' and at end 'and'*/}
@@ -135,7 +147,12 @@ function App() {
           </p>
         </div>
         <div className="map">
-
+          {/*If latitude and longitude are there shows the map component otherwise map not available */}
+          {selected.latlng ? (
+            <Map lat={lat} lng={lng}  />
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </>
