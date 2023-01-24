@@ -1,3 +1,8 @@
+# Population tracker
+
+<img  height='500' width='500' src="https://i.ibb.co/Sm2KMN2/Tracker-population.jpg" alt="Tracker-population">
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
