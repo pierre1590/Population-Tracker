@@ -5,13 +5,20 @@ import './map.css';
 
 
 
-export const Map = ({lat,lng}) => {
 
+export const Map = ({lat,lng}) => {
+ 
+
+  const key = lat + ':' + lng;
+
+ 
+  
  
     return (
       <>
         <MapContainer
-          center={[lat, lng]}
+          key={key}
+          center={[lat,lng]}
           zoom={4}
           scrollWheelZoom={false}
           className='map-leaflet' 

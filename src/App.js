@@ -1,8 +1,10 @@
 import SearchBar from './components/SearchBar/SearchBar.js';
 import { useState,useEffect } from 'react';
-import './App.css';
 import axios from 'axios';
+import { Col,Row,Container } from 'react-bootstrap';
 import {Map} from './components/Map/Map.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 
 function App() {
@@ -77,21 +79,29 @@ console.log(lat,lng)
           </ul>
         }
       </div>
-      <div className="info-container">
+
+        {/*Create layout of 1 row and three columns with Bootstrap */}
+        <Container className="container">
+        <Row>
+        <Col>
+        <div className="info-container">
         <div className='country-flag'>
           {/*If flagi there is shows it otherwise flag not available */}
           {selected.flag ? (
             <img
               src={selected.flag}
               alt="flag"
-              width={180}
-              height={120}
+              width={240}
+              height={180}
               className="flag"
             />
           ) : (
             <p> </p>
           )}
         </div>
+        </div>
+        </Col>
+        <Col>
         <div className="info">
           <h1>{selected.name}</h1>
           <p className="item">Capital: {selected.capital}</p>
@@ -101,21 +111,22 @@ console.log(lat,lng)
             {selected.population &&
               Number(selected.population).toLocaleString("en") + " ab."}
           </p>
-         {/*Calculate ab/Km^2 per square km */}
-          <p className="item">  
+          {/*Calculate ab/Km^2 per square km */}
+          <p className="item">
             Density:{" "}
             {selected.population && selected.area
               ? Number(selected.population / selected.area).toLocaleString("en") +
                 " ab./Km²"
               : " "}
-         </p>
-         <p className="item">
+          </p>
+          <p className="item">
             Area:{" "}
             {selected.area &&
               Number(selected.area).toLocaleString("en") + " km²"}
           </p>
+          <p className="item">Region: {selected.region}</p>
           <p className="item">
-            Timezone:{" "}
+          Timezone:{" "}
             {selected.timezones &&
              selected.timezones.length > 1
               ? selected.timezones
@@ -125,8 +136,6 @@ console.log(lat,lng)
               : selected.timezones &&
                 selected.timezones.map((timezone) => timezone)}
           </p>
-          <p className="item">Region: {selected.region}</p>
-          {/*if languages are two use 'and' otherwise use ',' and at end 'and'*/}
           <p className="item">
             Languages:{" "}
             {selected.languages && selected.languages.length > 1
@@ -137,26 +146,30 @@ console.log(lat,lng)
               : selected.languages &&
                 selected.languages.map((language) => language.name)}
           </p>
-          {/*Currency in format: Euro - (€) */}
           <p className="item">
-            Currencies:{" "}
+          Currency:{" "}
             {selected.currencies &&
               selected.currencies.map(
                 (currency) => currency.name + " - (" + currency.symbol + ")"
               )}
           </p>
         </div>
+        </Col>
+        <Col>
         <div className="map">
-          {/*If latitude and longitude are there shows the map component otherwise map not available */}
-          {selected.latlng ? (
+        {selected.latlng ? (
             <Map lat={lat} lng={lng}  />
           ) : (
             ''
           )}
         </div>
-      </div>
+        </Col>
+        </Row>
+        </Container>
     </>
   );
 }
 
+
+     
 export default App;

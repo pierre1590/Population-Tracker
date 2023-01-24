@@ -31,25 +31,14 @@ h1{
     text-align: center;
 }
 
-.country-flag{
-    display: inline;
-   
-}
-
 .flag{
     width: 240px;
-    height: 150px;
+    height: 180px;
     border: 2px solid #000;
     border-radius: 10%;
     padding: 5px;
 }
 
-.info-container{
-    display: flex;
-    flex-direction: row;   
-    padding: 10px;
-    margin: 0 38% auto;
-}
 
 .item{
     margin:  10px;
@@ -57,16 +46,14 @@ h1{
     font-weight: 600;
 }
 
-.info{
-    display: inline;
+.container{
+    margin: 20px 25% auto;
 }
 
-.country-flag{
-    display: inline;
-}
+
 
 .map{
-    display: inline;
+   
     width: 510px;
     height: 510px;
     border: 2px solid #000;
