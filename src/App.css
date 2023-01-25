@@ -1,25 +1,9 @@
-/*Create the overlay for the list results*/
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-  cursor: pointer;
-  display: none;
-}
-
-
-
-
 
 .list{
-    margin: 0 49.9% auto;
-    width: 10%;
+    margin: 2px 49% auto;
+    width: 15%;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
     border-bottom-left-radius:0.5em ;
     border-bottom-right-radius: 0.5em;
     list-style: none; 
@@ -27,6 +11,8 @@
     font-size: 15px;
     overflow-y: auto;
     text-align: justify;
+    position: absolute;
+    z-index: 10;
 }
 
 ul>li{
@@ -51,14 +37,19 @@ h1{
     text-align: center;
 }
 
-.flag{
-    width: 240px;
-    height: 180px;
+.country-flag{
+    width: 250px;
+    height: 190px;
     border: 2px solid #000;
     border-radius: 10%;
-    padding: 5px;
+    padding: 3px;
 }
 
+.flag{
+    height: 180px;
+    width: 240px;
+    border-radius: 15%;
+}
 
 .item{
     margin:  10px;
@@ -67,9 +58,19 @@ h1{
 }
 
 .container{
-    margin: 20px 25% auto;
+    margin: 15px 10% auto;
+    position: relative;
+    
 }
 
+.info-container{
+    margin:25px 10px auto;
+    width: 100%;
+}
+
+.row-info{
+    margin-top: 20px;
+}
 
 
 .map{
@@ -79,5 +80,14 @@ h1{
     border: 2px solid #000;
     border-radius: 10%;
     padding: 5px;
+    z-index: 3;
+    margin-left:20%;
    
+}
+
+.message{
+    font-size: large;
+    font-weight: 600;
+    color: #f00;
+    
 }

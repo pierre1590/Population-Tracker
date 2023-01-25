@@ -1,6 +1,8 @@
 .map-leaflet{
+    
     height: 500px;
     width: 500px;
     border-radius: 10%;
    padding: 5px;
+   z-index: 3;
 }

@@ -60,30 +60,33 @@ function App() {
    }
    
   
-  
+   
 
-console.log(lat,lng)
+
 
   return (
-    <>
-      <div>
-        <SearchBar value={search} onChange={onChange} />
-        {<div className="overlay">
-          <ul className="list ">
-            {search.length > 0 &&
-              filteredCountries.map((country) => (
-                <li key={country.name} onClick={() => handleSelect(country)}>
-                  {country.name}
-                </li>
-              ))}
-          </ul>
-        </div>
-        }
-      </div>
+  
+      <>
+       
+      
 
         {/*Create layout of 1 row and three columns with Bootstrap */}
         <Container className="container">
-        <Row>
+        <SearchBar value={search} onChange={onChange} />
+       
+       {
+         <ul className="list ">
+        
+           {search.length > 0 &&
+             filteredCountries.map((country) => (
+               <li key={country.name} onClick={() => handleSelect(country)}>
+                 {country.name}
+               </li>
+             ))}
+         </ul>
+       
+       }
+        <Row className="row-info">
         <Col>
         <div className="info-container">
         <div className='country-flag'>
@@ -91,9 +94,8 @@ console.log(lat,lng)
           {selected.flag ? (
             <img
               src={selected.flag}
+              
               alt="flag"
-              width={240}
-              height={180}
               className="flag"
             />
           ) : (
