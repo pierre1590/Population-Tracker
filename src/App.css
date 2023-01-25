@@ -1,11 +1,30 @@
+/*Create the overlay for the list results*/
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
+  display: none;
+}
+
+
+
+
+
 .list{
     margin: 0 49.9% auto;
-    width: 6%;
+    width: 10%;
     border-bottom-left-radius:0.5em ;
     border-bottom-right-radius: 0.5em;
     list-style: none; 
     background-color: rgb(142, 209, 240);
-    font-size: 18px;
+    font-size: 15px;
     overflow-y: auto;
     text-align: justify;
 }
@@ -15,6 +34,7 @@ ul>li{
     margin: 2px  auto;
     cursor: pointer;
     text-align: left;
+    padding: 5px;
 }
 
 ul>li:hover{

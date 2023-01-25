@@ -19,7 +19,7 @@ export const Map = ({lat,lng}) => {
         <MapContainer
           key={key}
           center={[lat,lng]}
-          zoom={5}
+          zoom={4}
           scrollWheelZoom={false}
           className='map-leaflet' 
         >

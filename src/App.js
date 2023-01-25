@@ -68,8 +68,8 @@ console.log(lat,lng)
     <>
       <div>
         <SearchBar value={search} onChange={onChange} />
-        {
-          <ul className="list">
+        {<div className="overlay">
+          <ul className="list ">
             {search.length > 0 &&
               filteredCountries.map((country) => (
                 <li key={country.name} onClick={() => handleSelect(country)}>
@@ -77,6 +77,7 @@ console.log(lat,lng)
                 </li>
               ))}
           </ul>
+        </div>
         }
       </div>
 
