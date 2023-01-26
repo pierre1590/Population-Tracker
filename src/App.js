@@ -16,6 +16,7 @@ function App() {
   //Save latitude and longitude values for selected country
   const lat = selected.latlng && selected.latlng[0];
   const lng = selected.latlng && selected.latlng[1];
+  const area = selected.area && selected.area;
  
   
   console.log(countries)
@@ -161,7 +162,7 @@ function App() {
         <Col>
         <div className="map">
         {selected.latlng ? (
-            <Map lat={lat} lng={lng}  />
+            <Map lat={lat} lng={lng} area={area} />
           ) : (
             ''
           )}
