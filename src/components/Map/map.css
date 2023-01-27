@@ -6,3 +6,32 @@
    padding: 5px;
    z-index: 3;
 }
+
+/* Media queries */
+@media only screen and(max-width:320px){
+    .map-leaflet{
+        height:200px;
+        width: 150px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .map-leaflet{
+        height: 200px;
+        width: 350px;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .map-leaflet{
+        height:300px;
+        width: 450px;
+    }
+}
+
+@media only screen and (max-width:1024px) {
+    .map-leaflet{
+        height: 500px;
+        width: 300px;
+    }
+}

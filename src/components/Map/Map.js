@@ -12,12 +12,12 @@ export const Map = ({lat,lng,area}) => {
 
   const key = lat + ':' + lng;
 
-if(area < 1500) {
+if(area < 15000) {
   return (
     <MapContainer
       key={key}
       center={[lat,lng]}
-      zoom={15}
+      zoom={13}
       scrollWheelZoom={false}
       className='map-leaflet' 
     >
