@@ -1,33 +1,31 @@
 .map-leaflet{
     
-    height: 500px;
-    width: 500px;
+    
     border-radius: 10%;
    padding: 5px;
    z-index: 3;
 }
 
 /* Media queries */
-@media only screen and(max-width:480px){
+
+@media only screen and (max-width:480px) {
     .map-leaflet{
-        height:100px;
-        width: 100px;
+        width:60vw;
+        height:40vh;
     }
 }
 
-
-@media only screen and(min-width:480px) and (max-width:600px){
+@media only screen and (min-width:481) and (max-width:1023px) {
     .map-leaflet{
-        height:200px;
-        width: 150px;
+        width:65vw;
+        height: 35vh;
     }
 }
 
-
-
-@media only screen and (min-width:800px){
+@media only screen and (min-width:1024px) {
     .map-leaflet{
-        width:535px;
-        height: 535px;
+        width:21vw;
+        height: 41vh;
+        
     }
 }
