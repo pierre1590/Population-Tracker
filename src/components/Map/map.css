@@ -8,37 +8,26 @@
 }
 
 /* Media queries */
-@media only screen and(max-width:320px){
+@media only screen and(max-width:480px){
+    .map-leaflet{
+        height:100px;
+        width: 100px;
+    }
+}
+
+
+@media only screen and(min-width:480px) and (max-width:600px){
     .map-leaflet{
         height:200px;
         width: 150px;
     }
 }
 
-@media only screen and (max-width: 480px) {
-    .map-leaflet{
-        height: 200px;
-        width: 350px;
-    }
-}
 
-@media only screen and (max-width:768px) {
-    .map-leaflet{
-        height:300px;
-        width: 450px;
-    }
-}
 
-@media only screen and (max-width:1024px) {
+@media only screen and (min-width:800px){
     .map-leaflet{
-        height: 500px;
-        width: 300px;
-    }
-}
-
-@media only screen and (max-width:2560px) {
-    .map-leaflet{
-        width: 360px;
-        height: 400px;
+        width:535px;
+        height: 535px;
     }
 }

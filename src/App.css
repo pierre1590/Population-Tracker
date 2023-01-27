@@ -92,158 +92,90 @@ h1{
     
 }
 
-/* Media queries */
 
-/* DEVICE <= 320PX */
-@media only screen and (max-width: 320px) {
-    .list{
-        margin: 2px 30% auto;
-        width: 50%;
-    }
-    .map{
-        width: 80%;
-        height: 100%;
-        margin-left:0%;
-    }
-    .container{
-        margin: 15px 0% auto;
-    }
-    .info-container{
-        margin:25px 0px auto;
-        width: 100%;
-    }
-    .row-info{
-        margin-top: 20px;
-    }
-    .country-flag{
-        width: 100%;
-        height: 100%;
-    }
-    .flag{
-        height: 100%;
-        width: 100%;
-    }
-}
+/* Mobile: */
 
-/* DEVICE <= 480PX */
+/* Mobile Styles */
 @media only screen and (max-width: 480px) {
+    body {
+      font-size: 14px;
+    }
+  
+    h1 {
+      font-size: 18px;
+    }
+ 
     .list{
-        margin: 2px 20% auto;
-        width: 50%;
+        width: 47%;
+        margin: 2px 18% auto;
     }
+
+
     .map{
-        width: 90%;
-        height: 100%;
-        margin-left:0%;
+        margin-left: 5%;
+        height: 350px;
+        width: 250px;
     }
-    .container{
-        margin: 15px 0% auto;
+}																                       
+
+/* Tablet: */ 
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    body {
+        font-size: 14px;
+      }
+    
+      h1 {
+        font-size: 18px;
+      }
+    
+      .button {  
+        padding: 8px 12px;  
+    }  
+    
+    .list{
+
     }
-    .info-container{
-        margin:25px 0px auto;
-        width: 100%;
-    }
-    .row-info{
-        margin-top: 20px;
-    }
-    .country-flag{
-        width: 100%;
-        height: 100%;
-    }
-    .flag{
-        height: 100%;
-        width: 100%;
-    }
+
+      input[type="text"]{  
+        width: 100%;  
+    }  
+     
+  .map{
+      margin-left: 10%;
+      height: 400px;
+      width: 300px;
+  }
 }
 
-/* DEVICE <= 768PX */
-@media only screen and (max-width: 768px) {
-    .list{
-        margin: 2px 20% auto;
-        width: 50%;
-    }
-    .map{
-        width: 90%;
-        height: 100%;
-        margin-left:0%;
-    }
-    .container{
-        margin: 15px 0% auto;
-    }
-    .info-container{
-        margin:25px 0px auto;
-        width: 100%;
-    }
-    .row-info{
-        margin-top: 20px;
-    }
-    .country-flag{
-        width: 100%;
-        height: 100%;
-    }
-    .flag{
-        height: 100%;
-        width: 100%;
-    }
+/* Desktop: */ 
+@media only screen and (min-width: 901px) {
+    body {
+        font-size: 14px;
+      }
+    
+      h1 {
+        font-size: 18px;
+      }
+    
+ 
+   
+      .button {  
+        padding: 8px 12px;  
+    }  
+    
+      input[type="text"] {  
+        width: 100%;  
+    }  
+    
+   
+  .map{
+      margin-left: 20%;
+      height: 550px;
+      width: 550px;
+  }
 }
 
-/* DEVICE <= 1024PX */
-@media only screen and (max-width: 1024px) {
-    .list{
-        margin: 2px 50% auto;
-        width: 50%;
-    }
-    .map{
-        width: 90%;
-        height: 100%;
-        margin-left:0%;
-    }
-    .container{
-        margin: 15px 0% auto;
-    }
-    .info-container{
-        margin:25px 0px auto;
-        width: 100%;
-    }
-    .row-info{
-        margin-top: 20px;
-    }
-    .country-flag{
-        width: 100%;
-        height: 100%;
-    }
-    .flag{
-        height: 100%;
-        width: 100%;
-    }
-}
 
-@media only screen and (max-width:2560px){
-    .list{
-        margin: 2px 29% auto;
-        width: 15%;
-    }
-    .map{
-        width: 90%;
-        height: 100%;
-        margin-left:0%;
-    }
-    .container{
-        margin: 15px 0% auto;
-    }
-    .info-container{
-        margin:25px 0px auto;
-        width: 100%;
-    }
-    .row-info{
-        margin-top: 20px;
-    }
-    .country-flag{
-        width: 100%;
-        height: 100%;
-    }
-    .flag{
-        height: 100%;
-        width: 100%;
-    }
-}
+
+
