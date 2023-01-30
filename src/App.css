@@ -70,6 +70,8 @@ h1{
 
 .row-info{
     margin-top: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 
@@ -116,6 +118,10 @@ h1{
         height: 350px;
         width: 250px;
     }
+
+    .row-info{
+        flex-direction: column;
+    }
 }																                       
 
 /* Tablet: */ 
@@ -147,6 +153,10 @@ h1{
       margin-left: 10%;
       height: 400px;
       width: 300px;
+  }
+
+  .row-info{
+    flex-direction: column;
   }
 }
 

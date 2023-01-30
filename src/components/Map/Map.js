@@ -45,7 +45,7 @@ if(area < 15000) {
           color: 'red',
           weight: 1,
           fillColor: 'red',
-          fillOpacity: 0.1
+          fillOpacity: 0.2
         }} 
       />
     </MapContainer>
