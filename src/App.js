@@ -17,16 +17,20 @@ function App() {
   const lat = selected.latlng && selected.latlng[0];
   const lng = selected.latlng && selected.latlng[1];
   const area = selected.area && selected.area;
+
+
+
  
   
-  console.log(countries)
+
  //Take data from API with useEffect, async/await and try/catch
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://restcountries.com/v2/all');
         setCountries(response.data);
-        console.log(setCountries);
+        
+        
       } catch (error) {
         console.error(error);
       }
@@ -34,6 +38,7 @@ function App() {
     fetchData();
   }, []);
 
+  console.log(selected)
  
 
   const handleSelect = (country) => {
@@ -66,110 +71,106 @@ function App() {
 
 
   return (
-  
-      <>
-       
-      
-
-        {/*Create layout of 1 row and three columns with Bootstrap */}
-        <Container className="container">
+    <>
+      {/*Create layout of 1 row and three columns with Bootstrap */}
+      <Container className="container">
         <SearchBar value={search} onChange={onChange} />
-       
-       {
-         <ul className="list ">
-        
-           {search.length > 0 &&
-             filteredCountries.map((country) => (
-               <li key={country.name} onClick={() => handleSelect(country)}>
-                 {country.name}
-               </li>
-             ))}
-         </ul>
-       
-       }
+
+        {
+          <ul className="list ">
+            {search.length > 0 &&
+              filteredCountries.map((country) => (
+                <li key={country.name} onClick={() => handleSelect(country)}>
+                  {country.name}
+                </li>
+              ))}
+          </ul>
+        }
         <Row className="row-info">
-        <Col>
-        <div className="info-container">
-        <div className='country-flag'>
-          {/*If flagi there is shows it otherwise flag not available */}
-          {selected.flag ? (
-            <img
-              src={selected.flag}
-              
-              alt="flag"
-              className="flag"
-            />
-          ) : (
-            <p> </p>
-          )}
-        </div>
-        </div>
-        </Col>
-        <Col>
-        <div className="info">
-          <h1>{selected.name}</h1>
-          <p className="item">Capital: {selected.capital}</p>
-          {/*Convert population with Number */}
-          <p className="item">
-            Population:{" "}
-            {selected.population &&
-              Number(selected.population).toLocaleString("en") + " ab."}
-          </p>
-          {/*Calculate ab/Km^2 per square km */}
-          <p className="item">
-            Density:{" "}
-            {selected.population && selected.area
-              ? Number(selected.population / selected.area).toLocaleString("en") +
-                " ab./Km²"
-              : " "}
-          </p>
-          <p className="item">
-            Area:{" "}
-            {selected.area &&
-              Number(selected.area).toLocaleString("en") + " km²"}
-          </p>
-          <p className="item">Region: {selected.region}</p>
-          <p className="item">
-          Timezone:{" "}
-            {selected.timezones &&
-             selected.timezones.length > 1
-              ? selected.timezones
-                  .map((timezone) => timezone)
-                  .join(", ")
-                  .replace(/,(?!.*,)/gim, " and")
-              : selected.timezones &&
-                selected.timezones.map((timezone) => timezone)}
-          </p>
-          <p className="item">
-            Languages:{" "}
-            {selected.languages && selected.languages.length > 1
-              ? selected.languages
-                  .map((language) => language.name)
-                  .join(", ")
-                  .replace(/,(?!.*,)/gim, " and")
-              : selected.languages &&
-                selected.languages.map((language) => language.name)}
-          </p>
-          <p className="item">
-          Currency:{" "}
-            {selected.currencies &&
-              selected.currencies.map(
-                (currency) => currency.name + " - (" + currency.symbol + ")"
+          <Col>
+            <div className="info-container">
+              <div className="country-flag">
+                {/*If flagi there is shows it otherwise flag not available */}
+                {selected.flag ? (
+                  <img src={selected.flag} alt="flag" className="flag" />
+                ) : (
+                  <p> </p>
+                )}
+              </div>
+            </div>
+          </Col>
+          <Col>
+            <div className="info">
+              <h1>{selected.name}</h1>
+              <p className="item">Capital: {selected.capital}</p>
+              {/*Convert population with Number */}
+              <p className="item">
+                Population:{" "}
+                {selected.population &&
+                  Number(selected.population).toLocaleString("en") + " ab."}
+              </p>
+              {/*Calculate ab/Km^2 per square km */}
+              <p className="item">
+                Density:{" "}
+                {selected.population && selected.area
+                  ? Number(selected.population / selected.area).toLocaleString(
+                      "en"
+                    ) + " ab./Km²"
+                  : " "}
+              </p>
+              <p className="item">
+                Area:{" "}
+                {selected.area &&
+                  Number(selected.area).toLocaleString("en") + " km²"}
+              </p>
+              <p className="item">Region: {selected.region}</p>
+              <p className="item">
+                Timezone:{" "}
+                {selected.timezones && selected.timezones.length > 1
+                  ? selected.timezones
+                      .map((timezone) => timezone)
+                      .join(", ")
+                      .replace(/,(?!.*,)/gim, " and")
+                  : selected.timezones &&
+                    selected.timezones.map((timezone) => timezone)}
+              </p>
+              <p className="item">
+                Languages:{" "}
+                {selected.languages && selected.languages.length > 1
+                  ? selected.languages
+                      .map((language) => language.name)
+                      .join(", ")
+                      .replace(/,(?!.*,)/gim, " and")
+                  : selected.languages &&
+                    selected.languages.map((language) => language.name)}
+              </p>
+              <p className="item">
+                Currency:{" "}
+                {selected.currencies &&
+                  selected.currencies.map(
+                    (currency) => currency.name + " - (" + currency.symbol + ")"
+                  )}
+              </p>
+            </div>
+          </Col>
+          <Col>
+            <div className="map">
+              {selected.latlng ? (
+                <Map
+                  lat={lat}
+                  lng={lng}
+                  area={area}
+                  nameCountry={selected.name}
+                  iso={selected.alpha3Code}
+
+                />
+              ) : (
+                ""
               )}
-          </p>
-        </div>
-        </Col>
-        <Col>
-        <div className="map">
-        {selected.latlng ? (
-            <Map lat={lat} lng={lng} area={area} />
-          ) : (
-            ''
-          )}
-        </div>
-        </Col>
+            </div>
+          </Col>
         </Row>
-        </Container>
+      </Container>
     </>
   );
 }
